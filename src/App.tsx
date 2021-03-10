@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,7 +11,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
-import Modal from '@material-ui/core/Modal';
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button';
+import Reservation from './components/Reservation';
+import Footer from './components/Footer';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -45,17 +49,6 @@ function a11yProps(index: any) {
   };
 }
 
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -77,13 +70,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 200,
     },
     paper: {
-      position: 'absolute',
-      width: 600,
-      height: 300,
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
+      padding: theme.spacing(2),
+      textAlign: 'center',
     },
   }),
 );
@@ -96,30 +85,8 @@ export default function DenseAppBar() {
     setValue(newValue);
   };
 
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const body = (
-    <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">
-        Modal Text field
-      </h2>
-      <p id="simple-modal-description">
-        This is a sample text for modal material Ui.
-      </p>
-    </div>
-  );
-
   return (
+    <Router>
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar variant="dense">
@@ -129,17 +96,9 @@ export default function DenseAppBar() {
           <Typography variant="h6" color="inherit" className={classes.title}>
             Restaruant
           </Typography>
-          <button type="button" onClick={handleOpen}>
-            Open Modal
-          </button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-          >
-            {body}
-          </Modal>
+          <Button variant="contained">
+            <a href="/reservation">Reservation</a>
+          </Button>
         </Toolbar>
       </AppBar>
       <Paper className={classes.root}>
@@ -169,14 +128,39 @@ export default function DenseAppBar() {
             }}
           />
         </form>
+        <Route path='/reservation' component={Reservation}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>xs=12</Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>xs=6</Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>xs=6</Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>xs=3</Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>xs=3</Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>xs=3</Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>xs=3</Paper>
+          </Grid>
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
+      <Footer/>
     </div>
-    
+    </Router>
   );
 }
