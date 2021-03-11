@@ -100,43 +100,27 @@ export default function DenseAppBar() {
           centered
         >
           <Tab label="Home" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
-        <h2>Reservation time*</h2>        
-        
-        <Route path='/reservation' component={Reservation}/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
         <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>xs=12</Paper>
+          <Grid item xs={4}>
+            <Paper className={classes.paper}>
+              <h3>Reservation time*</h3>        
+        
+              <Route path='/reservation' component={Reservation}/>
+            </Paper>
           </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>xs=6</Paper>
+          <Grid item xs={8}>
+            <Paper className={classes.paper}>xs=8</Paper>
           </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>xs=6</Paper>
+          <Grid item xs={4}>
+            <Paper className={classes.paper}>xs=4</Paper>
           </Grid>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>xs=3</Paper>
-          </Grid>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>xs=3</Paper>
-          </Grid>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>xs=3</Paper>
-          </Grid>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>xs=3</Paper>
+          <Grid item xs={8}>
+            <Paper className={classes.paper}>xs=8</Paper>
           </Grid>
         </Grid>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
       </TabPanel>
       <Footer/>
     </div>

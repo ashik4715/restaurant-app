@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from "react-hook-form";
 import TextField from '@material-ui/core/TextField';
@@ -34,17 +34,30 @@ const Reservation = () => {
      const [email, setEmail] = useState<string>();
      const [datetime, setDate] = useState<string>();
      const { register, handleSubmit } = useForm<FormValues>();
+     
+     const [postId, setPostId] = useState(null);
      const onSubmit = async (data: FormValues) => 
      {
           setName(data.name);
           setEmail(data.email);
           setDate(data.datetime);
+
+          fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          })
+          .then(response => response.json())
+          .then(data => setPostId(data.id))
+          .catch((error) => {
+            console.error('Error:', error);
+          });
      };
      return (
           <div>
-             <h3>Reserve your table for food oders!</h3>
+             <h4>Reserve your table for food oders!</h4>
              <Button variant="contained" color="primary" href="/">
-               Go Back
+               Cancel
              </Button>
              <form className={classes.container} noValidate onSubmit={handleSubmit(onSubmit)}>
                <TextField margin="dense" name="name" id="name" label="Your Name" type="text"
@@ -66,17 +79,17 @@ const Reservation = () => {
                shrink: true,
                }}
                />
-               {/* <input name="fullName" ref={register} />
-               <input name="email" type="email" ref={register} />
-               <input name="datetime" ref={register} /> */}
                <Button 
-               variant="contained"
+               variant="contained" color = "secondary"
                type="submit"
                >Submit</Button>
              </form>
              {name && <div>Submitted name: {name}</div>}
              {email && <div>Submitted email: {email}</div>}
              {datetime && <div>Submitted datetime: {datetime}</div>}
+             <div className="card-body">
+                Returned Id: {postId}
+            </div>
           </div>
      )
 }
