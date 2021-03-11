@@ -10,7 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button';
 import Reservation from './components/Reservation';
@@ -60,15 +59,6 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: 200,
-    },
     paper: {
       backgroundColor: theme.palette.background.paper,
       padding: theme.spacing(2),
@@ -115,19 +105,8 @@ export default function DenseAppBar() {
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
-        <h5>Reservation time*</h5>        
-        <form className={classes.container} noValidate>
-          <TextField
-            id="datetime-local"
-            label="Reservation time"
-            type="datetime-local"
-            defaultValue="2021-03-01T10:30"
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-        </form>
+        <h2>Reservation time*</h2>        
+        
         <Route path='/reservation' component={Reservation}/>
       </TabPanel>
       <TabPanel value={value} index={1}>

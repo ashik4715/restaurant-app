@@ -1,8 +1,10 @@
-const Footer = () => {
+const Footer = () => {       
      return (
           <div>
                <hr/>
-               <p>Copyright &copy; 2021</p>
+               <p style={{backgroundColor: "DodgerBlue",textAlign: "center",}}>
+                    Copyright &copy; 2021
+               </p>
           </div>
      )
 }
