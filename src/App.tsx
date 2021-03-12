@@ -106,7 +106,7 @@ export default function DenseAppBar() {
         <Grid container spacing={3}>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              <h3>Reservation time*</h3>        
+              <h3>Date & time of Reservation</h3>        
         
               <Route path='/reservation' component={Reservation}/>
             </Paper>

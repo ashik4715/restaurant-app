@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from "react-hook-form";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
      root: {
@@ -26,6 +27,7 @@ interface FormValues {
      name: string;
      email: string;
      datetime: string;
+     person: string;
 };
 
 const Reservation = () => {
@@ -36,12 +38,20 @@ const Reservation = () => {
      const { register, handleSubmit } = useForm<FormValues>();
      
      const [postId, setPostId] = useState(null);
+     // selector
+     const [person, setPerson] = useState<string>('');
+
+     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+      setPerson(event.target.value as string);
+     };
+     // end selector
      const onSubmit = async (data: FormValues) => 
      {
           setName(data.name);
           setEmail(data.email);
           setDate(data.datetime);
-
+          setPerson(data.person);
+          console.log(data.person);
           fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -79,17 +89,31 @@ const Reservation = () => {
                shrink: true,
                }}
                />
+              <TextField id="select" label="Table for" 
+              inputRef={register}
+              name="person"
+              value={person}
+              onChange={handleChange}
+              fullWidth select>
+                <MenuItem value="1">1 Guest</MenuItem>
+                <MenuItem value="2">2 Guests</MenuItem>
+                <MenuItem value="3">3 Guests</MenuItem>
+                <MenuItem value="4">4 Guests</MenuItem>
+                <MenuItem value="5">5 Guests</MenuItem>
+                <MenuItem value="6">6 Guests</MenuItem>
+              </TextField>
                <Button 
                variant="contained" color = "secondary"
                type="submit"
+               fullWidth
                >Submit</Button>
              </form>
              {name && <div>Submitted name: {name}</div>}
              {email && <div>Submitted email: {email}</div>}
              {datetime && <div>Submitted datetime: {datetime}</div>}
-             <div className="card-body">
-                Returned Id: {postId}
-            </div>
+             {person && <div>Selects guests: {person}</div>}
+             {<div>Fetch API Returned Id: {postId}</div>}
+
           </div>
      )
 }
