@@ -101,8 +101,6 @@ const Reservation = () => {
                 <MenuItem value="2">2 Guests</MenuItem>
                 <MenuItem value="3">3 Guests</MenuItem>
                 <MenuItem value="4">4 Guests</MenuItem>
-                <MenuItem value="5">5 Guests</MenuItem>
-                <MenuItem value="6">6 Guests</MenuItem>
               </TextField>
                <Button 
                variant="contained" color = "secondary"
@@ -115,7 +113,6 @@ const Reservation = () => {
              {datetime && <div>Submitted datetime: {datetime}</div>}
              {person && <div>Selects guests: {person}</div>}
              {<div>Fetch API Returned Id: {postId}</div>}
-
           </div>
      )
 }

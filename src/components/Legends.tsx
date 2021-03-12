@@ -5,9 +5,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import BorderClear from '@material-ui/icons/BorderClear';
+import BorderStyle from '@material-ui/icons/BorderStyle';
+import BorderOuter from '@material-ui/icons/BorderOuter';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,26 +27,26 @@ const Legends = () => {
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+            <BorderStyle />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+        <ListItemText primary="Empty Table" secondary="Available for Reservation" />
       </ListItem>
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <WorkIcon />
+            <BorderClear />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work" secondary="Jan 7, 2014" />
+        <ListItemText primary="Reserved Table" secondary="Table Already Reserved" />
       </ListItem>
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <BeachAccessIcon />
+            <BorderOuter />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Vacation" secondary="July 20, 2014" />
+        <ListItemText primary="Occupied Table" secondary="Meal Served at Reserved Table" />
       </ListItem>
     </List>
   );

@@ -15,6 +15,12 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Avatar from '@material-ui/core/Avatar';
+import ReservedTable  from '@material-ui/icons/BorderClear';
+import EmptyTable  from '@material-ui/icons/BorderStyle';
+import OccupiedTable from '@material-ui/icons/BorderOuter';
 import Reservation from './components/Reservation';
 import Footer from './components/Footer';
 import Legends from './components/Legends';
@@ -81,6 +87,10 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(1),
       width: 200,
     },
+    card:{
+      minWidth: 275,
+      color: 'white',
+    }
   }),
 );
 
@@ -136,13 +146,13 @@ export default function DenseAppBar() {
       </Paper>
       <TabPanel value={value} index={0}>
         <Grid container spacing={3}>
-          <Grid item xs={4}>
+          <Grid item xs={6}>
             <Paper className={classes.paper}>
               <h3>Date & time of Reservation</h3>        
               <Route path='/reservation' component={Reservation}/>
             </Paper>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={6}>
             <Paper className={classes.paper}>
               <Grid item xs={12}>
                 <h4>Find Reservation Date</h4>
@@ -157,8 +167,7 @@ export default function DenseAppBar() {
                   }}
                 />
               </Grid>
-            <Grid container spacing={3}>
-          
+            <Grid container spacing={3}>       
               <Grid item xs={6}>
                 <h4>Legends</h4>
                 <Legends/>
@@ -191,7 +200,82 @@ export default function DenseAppBar() {
             </Paper>
           </Grid>
           <Grid item xs={8}>
-            <Paper className={classes.paper}>xs=8</Paper>
+            <Paper className={classes.paper}>
+              <Grid container spacing={2}>
+                <Grid item xs={3}>
+                  <Card className={classes.card}>
+                    <CardContent style={{backgroundColor: "darkGreen"}}>
+                        <Avatar >
+                          <EmptyTable /> 
+                        </Avatar>
+                        Empty Table 
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={3}>
+                  <Card className={classes.card}>
+                    <CardContent style={{backgroundColor: "darkGreen"}}>
+                        <Avatar>
+                          <EmptyTable /> 
+                        </Avatar>
+                        Empty Table 
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={3}>
+                  <Card className={classes.card}>
+                    <CardContent style={{backgroundColor: "darkGreen"}}>
+                        <Avatar>
+                          <EmptyTable />
+                        </Avatar>
+                        Empty Table 
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={3}>
+                  <Card className={classes.card}>
+                    <CardContent style={{backgroundColor: "teal", textEmphasisColor:"white"}}>
+                        <Avatar>
+                          <ReservedTable />
+                        </Avatar>
+                        Reserved Table 
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={3}>
+                  <Card className={classes.card}>
+                    <CardContent style={{backgroundColor: "red"}}>
+                        <Avatar>
+                          <OccupiedTable /> 
+                        </Avatar>
+                        Occupied Table 
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={6}>
+                  <Card className={classes.card}>
+                    <CardContent style={{backgroundColor: "darkGreen"}}>
+                        <Avatar>
+                          <EmptyTable />
+                        </Avatar>
+                        Empty Table 
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={3}>
+                  <Card className={classes.card}>
+                    <CardContent style={{backgroundColor: "teal", textEmphasisColor:"white"}}>
+                        <Avatar>
+                          <ReservedTable />
+                        </Avatar>
+                        Reserved Table 
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+            </Paper>
           </Grid>
         </Grid>
       </TabPanel>
