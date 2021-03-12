@@ -12,8 +12,13 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import TextField from '@material-ui/core/TextField';
 import Reservation from './components/Reservation';
 import Footer from './components/Footer';
+import Legends from './components/Legends';
+import Upcoming from './components/Upcoming';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -64,6 +69,18 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
       textAlign: 'center',
     },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: 200,
+    },
   }),
 );
 
@@ -74,6 +91,21 @@ export default function DenseAppBar() {
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
+
+  // drop down
+  const [state, setState] = React.useState<{ age: string | number; name: string }>({
+    age: '',
+    name: 'breakfast',
+  });
+  const handleChangePlaceholder = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
+    const name = event.target.name as keyof typeof state;
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+    console.log(event.target.value);
+  };
+  // end drop down
 
   return (
     <Router>
@@ -107,15 +139,56 @@ export default function DenseAppBar() {
           <Grid item xs={4}>
             <Paper className={classes.paper}>
               <h3>Date & time of Reservation</h3>        
-        
               <Route path='/reservation' component={Reservation}/>
             </Paper>
           </Grid>
           <Grid item xs={8}>
-            <Paper className={classes.paper}>xs=8</Paper>
+            <Paper className={classes.paper}>
+              <Grid item xs={12}>
+                <h4>Find Reservation Date</h4>
+                <TextField
+                  id="date"
+                  label="Find Reservation Date"
+                  type="date"
+                  defaultValue="2021-03-11"
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+            <Grid container spacing={3}>
+          
+              <Grid item xs={6}>
+                <h4>Legends</h4>
+                <Legends/>
+              </Grid>
+              <Grid item xs={6}>
+              <h4>Current Reservations</h4>  
+              <FormControl className={classes.formControl}>
+                <NativeSelect
+                  className={classes.selectEmpty}
+                  value={state.age}
+                  name="age"
+                  onChange={handleChangePlaceholder}
+                  inputProps={{ 'aria-label': 'age' }}
+                >
+                  <option value="" disabled>
+                    Meal
+                  </option>
+                  <option value={"Breakfast"}>Breakfast</option>
+                  <option value={"Lunch"}>Lunch</option>
+                  <option value={"Dinner"}>Dinner</option>
+                </NativeSelect>
+              </FormControl>
+              </Grid>
+            </Grid>
+            </Paper>
           </Grid>
           <Grid item xs={4}>
-            <Paper className={classes.paper}>xs=4</Paper>
+            <Paper className={classes.paper}>
+              <Upcoming/>
+            </Paper>
           </Grid>
           <Grid item xs={8}>
             <Paper className={classes.paper}>xs=8</Paper>

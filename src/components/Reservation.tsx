@@ -72,19 +72,21 @@ const Reservation = () => {
              <form className={classes.container} noValidate onSubmit={handleSubmit(onSubmit)}>
                <TextField margin="dense" name="name" id="name" label="Your Name" type="text"
                inputRef={register}
+               fullWidth
                variant="outlined" />
                <TextField margin="dense" name="email" id="email" label="Email Address" type="email"  
                inputRef={register}
-               variant="outlined"/>
+               fullWidth
+               variant="outlined" />
                <TextField
                id="datetime-local"
                name="datetime"
                inputRef={register}
+               fullWidth
                label="Reservation time"
                type="datetime-local"
                defaultValue="2021-03-01T10:30"
                className={classes.textField}
-               fullWidth
                InputLabelProps={{
                shrink: true,
                }}
