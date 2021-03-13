@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid'
+import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
      root: {
@@ -57,7 +58,7 @@ const Reservation = () => {
           setEmail(data.email);
           setDate(data.datetime);
           setPerson(data.person);
-          console.log(data.person);
+
           fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -139,6 +140,12 @@ const Reservation = () => {
              {datetime && <div>Submitted datetime: {datetime}</div>}
              {person && <div>Selects guests: {person}</div>}
              {<div>Fetch API Returned Id: {postId}</div>}
+             {postId && <Alert 
+             variant="filled" 
+             severity="success" 
+             onClose={() => {}}>
+               Table Reservation Succeeded!
+             </Alert>}
           </div>
      )
 }
