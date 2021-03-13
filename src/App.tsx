@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(2),
+      padding: theme.spacing(4),
       textAlign: 'center',
     },
     formControl: {
@@ -145,139 +145,139 @@ export default function DenseAppBar() {
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
-        <Grid container spacing={3}>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <Paper className={classes.paper}>
               <h3>Date & time of Reservation</h3>        
               <Route path='/reservation' component={Reservation}/>
             </Paper>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <Grid item xs={12}>
-                <h4>Find Reservation Date</h4>
-                <TextField
-                  id="date"
-                  label="Find Reservation Date"
-                  type="date"
-                  defaultValue="2021-03-11"
-                  className={classes.textField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </Grid>
-            <Grid container spacing={3}>       
+            <Grid container spacing={2}>
               <Grid item xs={6}>
-                <h4>Legends</h4>
-                <Legends/>
-              </Grid>
-              <Grid item xs={6}>
-              <h4>Current Reservations</h4>  
-              <FormControl className={classes.formControl}>
-                <NativeSelect
-                  className={classes.selectEmpty}
-                  value={state.age}
-                  name="age"
-                  onChange={handleChangePlaceholder}
-                  inputProps={{ 'aria-label': 'age' }}
-                >
-                  <option value="" disabled>
-                    Meal
-                  </option>
-                  <option value={"Breakfast"}>Breakfast</option>
-                  <option value={"Lunch"}>Lunch</option>
-                  <option value={"Dinner"}>Dinner</option>
-                </NativeSelect>
-              </FormControl>
-              </Grid>
-            </Grid>
-            </Paper>
-          </Grid>
-          <Grid item xs={4}>
-            <Paper className={classes.paper}>
-              <Upcoming/>
-            </Paper>
-          </Grid>
-          <Grid item xs={8}>
-            <Paper className={classes.paper}>
-              <Grid container spacing={2}>
-                <Grid item xs={3}>
-                  <Card className={classes.card}>
-                    <CardContent style={{backgroundColor: "darkGreen"}}>
-                        <Avatar >
-                          <EmptyTable /> 
-                        </Avatar>
-                        Empty Table 
-                    </CardContent>
-                  </Card>
-                </Grid>
-                <Grid item xs={3}>
-                  <Card className={classes.card}>
-                    <CardContent style={{backgroundColor: "darkGreen"}}>
-                        <Avatar>
-                          <EmptyTable /> 
-                        </Avatar>
-                        Empty Table 
-                    </CardContent>
-                  </Card>
-                </Grid>
-                <Grid item xs={3}>
-                  <Card className={classes.card}>
-                    <CardContent style={{backgroundColor: "darkGreen"}}>
-                        <Avatar>
-                          <EmptyTable />
-                        </Avatar>
-                        Empty Table 
-                    </CardContent>
-                  </Card>
-                </Grid>
-                <Grid item xs={3}>
-                  <Card className={classes.card}>
-                    <CardContent style={{backgroundColor: "teal", textEmphasisColor:"white"}}>
-                        <Avatar>
-                          <ReservedTable />
-                        </Avatar>
-                        Reserved Table 
-                    </CardContent>
-                  </Card>
-                </Grid>
-              </Grid>
-              <Grid container spacing={2}>
-                <Grid item xs={3}>
-                  <Card className={classes.card}>
-                    <CardContent style={{backgroundColor: "red"}}>
-                        <Avatar>
-                          <OccupiedTable /> 
-                        </Avatar>
-                        Occupied Table 
-                    </CardContent>
-                  </Card>
-                </Grid>
+                <h4>Current Reservations</h4>  
+                <FormControl className={classes.formControl}>
+                  <NativeSelect
+                    className={classes.selectEmpty}
+                    value={state.age}
+                    name="age"
+                    onChange={handleChangePlaceholder}
+                    inputProps={{ 'aria-label': 'age' }}
+                  >
+                    <option value="" disabled>
+                      Meal
+                    </option>
+                    <option value={"Breakfast"}>Breakfast</option>
+                    <option value={"Lunch"}>Lunch</option>
+                    <option value={"Dinner"}>Dinner</option>
+                  </NativeSelect>
+                </FormControl>
+                </Grid> 
                 <Grid item xs={6}>
-                  <Card className={classes.card}>
-                    <CardContent style={{backgroundColor: "darkGreen"}}>
-                        <Avatar>
-                          <EmptyTable />
-                        </Avatar>
-                        Empty Table 
-                    </CardContent>
-                  </Card>
-                </Grid>
-                <Grid item xs={3}>
-                  <Card className={classes.card}>
-                    <CardContent style={{backgroundColor: "teal", textEmphasisColor:"white"}}>
-                        <Avatar>
-                          <ReservedTable />
-                        </Avatar>
-                        Reserved Table 
-                    </CardContent>
-                  </Card>
-                </Grid>
+                  <h4>Find Reservation Date</h4>
+                  <TextField
+                    id="date"
+                    label="Find Reservation Date"
+                    type="date"
+                    defaultValue="2021-03-11"
+                    className={classes.textField}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </Grid> 
               </Grid>
             </Paper>
           </Grid>
-        </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <h4>Legends</h4>
+              <Legends/>                
+            </Grid>
+            <Grid item xs={6}>
+              <Paper className={classes.paper}>
+                <Upcoming/>
+              </Paper>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <Grid container spacing={3}>
+                  <Grid item xs={3}>
+                    <Card className={classes.card}>
+                      <CardContent style={{backgroundColor: "darkGreen"}}>
+                          <Avatar >
+                            <EmptyTable /> 
+                          </Avatar>
+                          Empty Table 
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Card className={classes.card}>
+                      <CardContent style={{backgroundColor: "darkGreen"}}>
+                          <Avatar>
+                            <EmptyTable /> 
+                          </Avatar>
+                          Empty Table 
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Card className={classes.card}>
+                      <CardContent style={{backgroundColor: "darkGreen"}}>
+                          <Avatar>
+                            <EmptyTable />
+                          </Avatar>
+                          Empty Table 
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Card className={classes.card}>
+                      <CardContent style={{backgroundColor: "teal", textEmphasisColor:"white"}}>
+                          <Avatar>
+                            <ReservedTable />
+                          </Avatar>
+                          Reserved Table 
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={3}>
+                    <Card className={classes.card}>
+                      <CardContent style={{backgroundColor: "red"}}>
+                          <Avatar>
+                            <OccupiedTable /> 
+                          </Avatar>
+                          Occupied Table 
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Card className={classes.card}>
+                      <CardContent style={{backgroundColor: "darkGreen"}}>
+                          <Avatar>
+                            <EmptyTable />
+                          </Avatar>
+                          Empty Table 
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Card className={classes.card}>
+                      <CardContent style={{backgroundColor: "teal", textEmphasisColor:"white"}}>
+                          <Avatar>
+                            <ReservedTable />
+                          </Avatar>
+                          Reserved Table 
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grid>
       </TabPanel>
       <Footer/>
     </div>

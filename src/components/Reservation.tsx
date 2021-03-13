@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles((theme) => ({
      root: {
@@ -21,7 +23,11 @@ const useStyles = makeStyles((theme) => ({
        marginRight: theme.spacing(1),
        width: 200,
      },
-   }));     
+     card:{
+       minWidth: 275,
+       color: 'white',
+     },
+}));     
 
 interface FormValues {
      name: string;
@@ -70,43 +76,63 @@ const Reservation = () => {
                Cancel
              </Button>
              <form className={classes.container} noValidate onSubmit={handleSubmit(onSubmit)}>
-               <TextField margin="dense" name="name" id="name" label="Your Name" type="text"
-               inputRef={register}
-               fullWidth
-               variant="outlined" />
-               <TextField margin="dense" name="email" id="email" label="Email Address" type="email"  
-               inputRef={register}
-               fullWidth
-               variant="outlined" />
-               <TextField
-               id="datetime-local"
-               name="datetime"
-               inputRef={register}
-               fullWidth
-               label="Reservation time"
-               type="datetime-local"
-               defaultValue="2021-03-01T10:30"
-               className={classes.textField}
-               InputLabelProps={{
-               shrink: true,
-               }}
-               />
-              <TextField id="select" label="Table for" 
-              inputRef={register}
-              name="person"
-              value={person}
-              onChange={handleChange}
-              fullWidth select>
-                <MenuItem value="1">1 Guest</MenuItem>
-                <MenuItem value="2">2 Guests</MenuItem>
-                <MenuItem value="3">3 Guests</MenuItem>
-                <MenuItem value="4">4 Guests</MenuItem>
-              </TextField>
-               <Button 
-               variant="contained" color = "secondary"
-               type="submit"
-               fullWidth
-               >Submit</Button>
+              <Grid container spacing={4}>
+                  <Grid item xs={6}>
+                    <Card className={classes.card}>
+                      <TextField margin="dense" name="name" id="name" label="Your Name" type="text"
+                      inputRef={register}
+                      fullWidth
+                      variant="outlined" />
+                    </Card>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Card className={classes.card}>
+                    <TextField
+                      id="datetime-local"
+                      name="datetime"
+                      inputRef={register}
+                      label="Reservation time"
+                      type="datetime-local"
+                      defaultValue="2021-03-01T10:30"
+                      className={classes.textField}
+                      InputLabelProps={{
+                      shrink: true,
+                      }}
+                    />
+                    </Card>
+                  </Grid>
+              </Grid>
+              <Grid container spacing={4}>
+                  <Grid item xs={6}>
+                    <Card className={classes.card}>
+                      <TextField id="select" label="Table for" 
+                        inputRef={register}
+                        name="person"
+                        value={person}
+                        onChange={handleChange}
+                        fullWidth select>
+                          <MenuItem value="1">1 Guest</MenuItem>
+                          <MenuItem value="2">2 Guests</MenuItem>
+                          <MenuItem value="3">3 Guests</MenuItem>
+                          <MenuItem value="4">4 Guests</MenuItem>
+                      </TextField>
+                    </Card>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Card className={classes.card}>
+                      <TextField margin="dense" name="email" id="email" label="Email Address" type="email"  
+                      inputRef={register}
+                      fullWidth
+                      variant="outlined" />
+                      <Button 
+                      variant="contained" color = "secondary"
+                      type="submit"
+                      fullWidth
+                      >Submit
+                      </Button>
+                    </Card>
+                  </Grid>
+              </Grid> 
              </form>
              {name && <div>Submitted name: {name}</div>}
              {email && <div>Submitted email: {email}</div>}

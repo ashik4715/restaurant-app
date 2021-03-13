@@ -31,12 +31,16 @@ const Legends = () => {
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Empty Table" secondary="Empty Reservation" />
+      </ListItem>
+      <ListItem>
         <ListItemAvatar>
           <Avatar>
             <BorderClear />
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Reserved Table" secondary="Table Already Reserved" />
+      </ListItem>
+      <ListItem>
         <ListItemAvatar>
           <Avatar>
             <BorderOuter />
@@ -44,7 +48,6 @@ const Legends = () => {
         </ListItemAvatar>
         <ListItemText primary="Occupied Table" secondary="Meal Served at Reserved Table" />
       </ListItem>
-      
     </List>
   );
 }
